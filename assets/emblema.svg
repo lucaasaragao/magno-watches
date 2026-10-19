@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+  <defs>
+    <linearGradient id="prata" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#f4f2ec"/>
+      <stop offset=".45" stop-color="#a7a8ab"/>
+      <stop offset=".6" stop-color="#e9e7e1"/>
+      <stop offset="1" stop-color="#8d8f93"/>
+    </linearGradient>
+  </defs>
+  <circle cx="100" cy="100" r="98" fill="#000"/>
+  <circle cx="100" cy="100" r="92" fill="none" stroke="url(#prata)" stroke-width="3"/>
+  <circle cx="100" cy="100" r="70" fill="none" stroke="url(#prata)" stroke-width="2.5"/>
+  <circle cx="100" cy="100" r="64" fill="none" stroke="url(#prata)" stroke-width="1"/>
+  <g fill="url(#prata)">
+    <path d="M100 44 L95 26 L105 26 Z"/>
+    <path d="M100 156 L95 174 L105 174 Z"/>
+    <path d="M44 100 L26 95 L26 105 Z"/>
+    <path d="M156 100 L174 95 L174 105 Z"/>
+  </g>
+  <text x="100" y="124" text-anchor="middle" font-family="Marcellus, 'Trajan Pro', Georgia, serif" font-size="70" fill="url(#prata)">M</text>
+</svg>

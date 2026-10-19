@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Magno Watches</title>
+  <meta name="description" content="Relógios à venda, os que estão chegando e a coleção de Magno Watches.">
+  <meta name="theme-color" content="#1c1e22">
+  <meta property="og:title" content="Magno Watches">
+  <meta property="og:description" content="Relógios à venda, os que estão chegando e a minha coleção.">
+  <meta property="og:type" content="website">
+  <link rel="icon" href="assets/emblema.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Hanken+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <a class="pular" href="#conteudo">Pular para os relógios</a>
+
+  <header class="topo">
+    <a class="marca" href="#" aria-label="Magno Watches, voltar ao início">
+      <img src="assets/emblema.svg" alt="" width="36" height="36">
+      <span>Magno <small>Watches</small></span>
+    </a>
+    <nav class="menu" aria-label="Seções">
+      <a href="#venda">À venda <span data-conta="venda"></span></a>
+      <a href="#chegando">Chegando <span data-conta="chegando"></span></a>
+      <a href="#colecao">Coleção <span data-conta="colecao"></span></a>
+      <a href="#curiosidades">Curiosidades</a>
+    </nav>
+    <a class="botao botao-metal topo-contato" data-whatsapp href="#">Falar comigo</a>
+  </header>
+
+  <section class="abertura">
+    <div class="mostrador" id="mostrador" role="img" aria-label="Emblema da Magno Watches marcando a hora atual"></div>
+    <div class="abertura-texto">
+      <h1 class="wordmark">Magno<span>Watches</span></h1>
+      <p class="sobre" data-sobre></p>
+      <ul class="resumo" data-resumo></ul>
+    </div>
+  </section>
+
+  <main id="conteudo">
+    <section class="secao" id="venda" aria-labelledby="t-venda">
+      <header class="secao-topo">
+        <h2 id="t-venda">À venda</h2>
+        <p>Disponíveis agora. Toque em um relógio para ver fotos, detalhes e falar comigo.</p>
+      </header>
+      <div class="filtro" data-filtro="venda" hidden></div>
+      <div class="grade" data-lista="venda"></div>
+      <div class="vendidos" data-vendidos hidden>
+        <h3>Já foram vendidos</h3>
+        <div class="vendidos-lista" data-lista="vendido"></div>
+      </div>
+    </section>
+
+    <section class="secao" id="chegando" aria-labelledby="t-chegando">
+      <header class="secao-topo">
+        <h2 id="t-chegando">Chegando</h2>
+        <p>Já estão a caminho. Dá para reservar antes de chegarem.</p>
+      </header>
+      <div class="grade grade-larga" data-lista="chegando"></div>
+    </section>
+
+    <section class="secao" id="colecao" aria-labelledby="t-colecao">
+      <header class="secao-topo">
+        <h2 id="t-colecao">Coleção</h2>
+        <p>Os que ficam comigo. Não estão à venda, mas a conversa é sempre bem-vinda.</p>
+      </header>
+      <div class="filtro" data-filtro="colecao" hidden></div>
+      <div class="grade" data-lista="colecao"></div>
+    </section>
+
+    <section class="secao" id="curiosidades" aria-labelledby="t-curiosidades">
+      <header class="secao-topo">
+        <h2 id="t-curiosidades">Curiosidades</h2>
+        <p>Histórias e detalhes do mundo dos relógios.</p>
+      </header>
+      <div class="curiosidades" data-curiosidades></div>
+    </section>
+  </main>
+
+  <footer class="rodape">
+    <img src="assets/emblema.svg" alt="" width="64" height="64">
+    <div>
+      <p class="rodape-nome">Magno Watches</p>
+      <p data-cidade></p>
+    </div>
+    <div class="rodape-links">
+      <a class="botao botao-metal" data-whatsapp href="#">Falar no WhatsApp</a>
+      <a class="botao botao-linha" data-instagram href="#" target="_blank" rel="noopener" hidden>Instagram</a>
+    </div>
+  </footer>
+
+  <dialog class="detalhe" id="detalhe" aria-labelledby="detalhe-titulo">
+    <button class="fechar" type="button" data-fechar aria-label="Fechar">
+      <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M5 5l14 14M19 5L5 19" stroke="currentColor" stroke-width="1.6"/></svg>
+    </button>
+    <div class="detalhe-corpo" data-detalhe></div>
+  </dialog>
+
+  <div class="aviso" role="status" aria-live="polite" data-aviso></div>
+
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>

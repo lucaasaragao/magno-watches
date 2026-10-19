@@ -1,0 +1,211 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Painel · Magno Watches</title>
+  <meta name="theme-color" content="#1c1e22">
+  <link rel="icon" href="assets/emblema.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Hanken+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/admin.css">
+</head>
+<body class="painel">
+
+  <!-- entrada -->
+  <section class="entrada" data-tela="entrada">
+    <img src="assets/emblema.svg" alt="" width="88" height="88">
+    <h1>Painel da vitrine</h1>
+    <p>Aqui você adiciona, edita e remove relógios. As alterações são salvas no seu repositório do GitHub e aparecem no site em cerca de um minuto.</p>
+    <form class="entrada-form" data-form-entrada>
+      <label for="token">Chave de acesso do GitHub</label>
+      <input id="token" name="token" type="password" autocomplete="current-password" required spellcheck="false" placeholder="github_pat_…">
+      <label class="check"><input type="checkbox" name="lembrar" checked> Lembrar neste aparelho</label>
+      <button class="botao botao-metal" type="submit">Entrar</button>
+      <p class="erro" data-erro-entrada role="alert"></p>
+    </form>
+    <details class="ajuda">
+      <summary>Como criar a chave de acesso</summary>
+      <ol>
+        <li>Abra <a href="https://github.com/settings/personal-access-tokens/new" target="_blank" rel="noopener">github.com/settings/personal-access-tokens/new</a>.</li>
+        <li>Dê um nome, como “Painel Magno Watches”, e escolha a validade.</li>
+        <li>Em <b>Repository access</b>, marque <b>Only select repositories</b> e escolha <b data-nome-repo>magno-watches</b>.</li>
+        <li>Em <b>Permissions › Repository permissions › Contents</b>, escolha <b>Read and write</b>.</li>
+        <li>Clique em <b>Generate token</b>, copie a chave e cole aqui.</li>
+      </ol>
+      <p>A chave fica guardada só neste aparelho. Quem não tiver a chave vê o painel, mas não consegue alterar nada.</p>
+    </details>
+  </section>
+
+  <!-- painel -->
+  <div class="app" data-tela="app" hidden>
+    <header class="topo">
+      <a class="marca" href="./" target="_blank" rel="noopener">
+        <img src="assets/emblema.svg" alt="" width="36" height="36">
+        <span>Magno <small>Painel</small></span>
+      </a>
+      <nav class="menu abas" role="tablist" aria-label="Seções do painel">
+        <button role="tab" aria-selected="true" data-aba="relogios">Relógios</button>
+        <button role="tab" aria-selected="false" data-aba="curiosidades">Curiosidades</button>
+        <button role="tab" aria-selected="false" data-aba="contato">Contato e textos</button>
+      </nav>
+      <button class="botao botao-linha topo-sair" type="button" data-sair>Sair</button>
+    </header>
+
+    <main class="painel-corpo">
+      <section data-painel="relogios">
+        <div class="painel-titulo">
+          <div>
+            <h1>Relógios</h1>
+            <p data-contagem></p>
+          </div>
+          <button class="botao botao-metal" type="button" data-novo-relogio>Adicionar relógio</button>
+        </div>
+        <div class="lista" data-lista-relogios></div>
+      </section>
+
+      <section data-painel="curiosidades" hidden>
+        <div class="painel-titulo">
+          <div>
+            <h1>Curiosidades</h1>
+            <p>Histórias curtas que aparecem no fim da vitrine.</p>
+          </div>
+          <button class="botao botao-metal" type="button" data-nova-curiosidade>Adicionar curiosidade</button>
+        </div>
+        <div class="lista" data-lista-curiosidades></div>
+      </section>
+
+      <section data-painel="contato" hidden>
+        <div class="painel-titulo">
+          <div>
+            <h1>Contato e textos</h1>
+            <p>O WhatsApp recebe as mensagens dos botões “Quero este relógio” e “Falar comigo”.</p>
+          </div>
+        </div>
+        <form class="form" data-form-contato>
+          <div class="campo">
+            <label for="c-whatsapp">WhatsApp</label>
+            <input id="c-whatsapp" name="whatsapp" inputmode="tel" placeholder="55 85 99999-9999">
+            <small>Com DDI e DDD. Ex.: 55 85 99999-9999</small>
+          </div>
+          <div class="campo">
+            <label for="c-instagram">Instagram</label>
+            <input id="c-instagram" name="instagram" placeholder="@magnowatches">
+          </div>
+          <div class="campo">
+            <label for="c-cidade">Cidade</label>
+            <input id="c-cidade" name="cidade" placeholder="Fortaleza, CE">
+          </div>
+          <div class="campo campo-largo">
+            <label for="c-sobre">Texto de apresentação</label>
+            <textarea id="c-sobre" name="sobre" rows="4"></textarea>
+            <small>Aparece no topo do site, ao lado do emblema.</small>
+          </div>
+          <div class="form-acoes">
+            <button class="botao botao-metal" type="submit">Guardar</button>
+          </div>
+        </form>
+      </section>
+    </main>
+
+    <div class="publicar" data-barra-publicar hidden>
+      <p><b data-pendentes></b><span>As mudanças só aparecem no site depois de publicar.</span></p>
+      <div>
+        <button class="botao botao-linha" type="button" data-descartar>Descartar</button>
+        <button class="botao botao-metal" type="button" data-publicar>Publicar no site</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- editor de relógio -->
+  <dialog class="editor" data-editor-relogio aria-labelledby="ed-titulo">
+    <form class="form" data-form-relogio method="dialog">
+      <header class="editor-topo">
+        <h2 id="ed-titulo">Relógio</h2>
+        <button class="fechar" type="button" data-cancelar aria-label="Fechar">
+          <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M5 5l14 14M19 5L5 19" stroke="currentColor" stroke-width="1.6"/></svg>
+        </button>
+      </header>
+
+      <fieldset class="situacao">
+        <legend>Onde ele aparece</legend>
+        <label><input type="radio" name="status" value="venda" checked><span>À venda</span></label>
+        <label><input type="radio" name="status" value="chegando"><span>Chegando</span></label>
+        <label><input type="radio" name="status" value="colecao"><span>Coleção</span></label>
+        <label><input type="radio" name="status" value="vendido"><span>Vendido</span></label>
+      </fieldset>
+
+      <div class="campo campo-largo">
+        <span class="rotulo">Fotos <small>até 4. A primeira é a capa.</small></span>
+        <div class="fotos" data-fotos></div>
+        <p class="erro" data-erro-fotos role="alert"></p>
+      </div>
+
+      <div class="campo"><label for="r-marca">Marca</label><input id="r-marca" name="marca" required placeholder="Rolex"></div>
+      <div class="campo"><label for="r-modelo">Modelo</label><input id="r-modelo" name="modelo" required placeholder="Submariner Date"></div>
+      <div class="campo"><label for="r-referencia">Referência</label><input id="r-referencia" name="referencia" placeholder="126610LN"></div>
+      <div class="campo"><label for="r-ano">Ano</label><input id="r-ano" name="ano" inputmode="numeric" placeholder="2021"></div>
+
+      <div class="campo" data-so="venda chegando vendido">
+        <label for="r-preco">Preço (R$)</label>
+        <input id="r-preco" name="preco" inputmode="numeric" placeholder="Em branco = sob consulta">
+      </div>
+      <div class="campo" data-so="chegando">
+        <label for="r-previsao">Previsão de chegada</label>
+        <input id="r-previsao" name="previsao" type="month">
+      </div>
+
+      <div class="campo"><label for="r-caixa">Caixa</label><input id="r-caixa" name="caixa" placeholder="41 mm"></div>
+      <div class="campo"><label for="r-material">Material</label><input id="r-material" name="material" placeholder="Aço inoxidável"></div>
+      <div class="campo"><label for="r-movimento">Movimento</label><input id="r-movimento" name="movimento" placeholder="Automático"></div>
+      <div class="campo"><label for="r-pulseira">Pulseira</label><input id="r-pulseira" name="pulseira" placeholder="Couro marrom"></div>
+      <div class="campo" data-so="venda chegando vendido"><label for="r-kit">Acompanha</label><input id="r-kit" name="kit" placeholder="Caixa e papéis"></div>
+      <div class="campo" data-so="venda chegando vendido"><label for="r-condicao">Estado</label><input id="r-condicao" name="condicao" placeholder="Excelente"></div>
+
+      <div class="campo campo-largo">
+        <label for="r-descricao">Descrição</label>
+        <textarea id="r-descricao" name="descricao" rows="4" placeholder="O que esse relógio tem de especial?"></textarea>
+      </div>
+
+      <footer class="editor-acoes">
+        <button class="botao botao-linha" type="button" data-cancelar>Cancelar</button>
+        <button class="botao botao-metal" type="submit">Guardar relógio</button>
+      </footer>
+    </form>
+  </dialog>
+
+  <!-- editor de curiosidade -->
+  <dialog class="editor" data-editor-curiosidade aria-labelledby="ec-titulo">
+    <form class="form" data-form-curiosidade method="dialog">
+      <header class="editor-topo">
+        <h2 id="ec-titulo">Curiosidade</h2>
+        <button class="fechar" type="button" data-cancelar aria-label="Fechar">
+          <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M5 5l14 14M19 5L5 19" stroke="currentColor" stroke-width="1.6"/></svg>
+        </button>
+      </header>
+      <div class="campo campo-largo"><label for="cu-titulo">Título</label><input id="cu-titulo" name="titulo" required></div>
+      <div class="campo campo-largo"><label for="cu-texto">Texto</label><textarea id="cu-texto" name="texto" rows="6" required></textarea></div>
+      <div class="campo campo-largo">
+        <label for="cu-relogio">Relógio relacionado</label>
+        <select id="cu-relogio" name="relogio"></select>
+        <small>Opcional. Mostra um link para o relógio abaixo do texto.</small>
+      </div>
+      <div class="campo campo-largo">
+        <span class="rotulo">Foto <small>opcional</small></span>
+        <div class="fotos fotos-uma" data-foto-curiosidade></div>
+      </div>
+      <footer class="editor-acoes">
+        <button class="botao botao-linha" type="button" data-cancelar>Cancelar</button>
+        <button class="botao botao-metal" type="submit">Guardar curiosidade</button>
+      </footer>
+    </form>
+  </dialog>
+
+  <div class="aviso" role="status" aria-live="polite" data-aviso></div>
+
+  <script type="module" src="js/admin.js"></script>
+</body>
+</html>
